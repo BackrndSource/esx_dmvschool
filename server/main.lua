@@ -23,7 +23,9 @@ RegisterNetEvent('esx_dmvschool:pay')
 AddEventHandler('esx_dmvschool:pay', function(price)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
-
-	xPlayer.removeMoney(price)
-	TriggerClientEvent('esx:showNotification', _source, _U('you_paid', ESX.Math.GroupDigits(price)))
+		
+	if xPlayer ~= nil then
+		xPlayer.removeMoney(price)
+		TriggerClientEvent('esx:showNotification', _source, _U('you_paid', ESX.Math.GroupDigits(price)))
+	end
 end)
